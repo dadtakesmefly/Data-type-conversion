@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="jquery-1.8.3/jquery.min.js"></script>
+</head>
+<body>
+    <div>
+        <p>测试文本1</p>
+        <p>测试文本2</p>
+        <img src="images/1.jpg" alt=""/>
+        <p>测试文本3</p>
+        <img src="images/上传图片.png" alt=""/>
+        <p>测试文本4</p>
+    </div>
+
+</body>
+<script>
+    console.log($("div").html());
+    var obj3={};
+    var arr =[];
+    $("div").children().each(function (i,v) {
+
+        if(hasPrototype(v, "src")){
+            obj3.type = "image" ;
+            obj3.content=$(this).attr("src");
+
+        }
+        else{
+            obj3.type = "text" ;
+            obj3.content=$(this).text();
+        }
+
+        var obj4 =JSON.stringify(obj3);
+//        var obj5 =eval("("+obj4 +")")  //字符串转对象
+        var obj5 =JSON.parse(obj4)   //字符串转对象
+
+//        console.log(typeof obj4);
+//         arr[i]=obj4 //数组里面字符串
+
+        arr[i] =obj5 //数组里面是对象
+
+
+    })
+
+    console.log(arr);
+//    var str = arr.toString()
+//    console.log(str);
+//    console.log(typeof str);
+//    var str1 ="[";
+//    var str2 ="]";
+//    console.log(str1.concat(str,str2));
+//    console.log(typeof str1.concat(str,str2));
+
+
+
+//console.log(insert_flg(str, "[", 0));
+
+
+function insert_flg(str,flg,sn){
+    var newstr="";
+    for(var i=0;i<str.length;i+=sn){
+        var tmp=str.substring(i, i+sn);
+        newstr+=tmp+flg;
+    }
+    return newstr;
+}
+
+
+
+function hasPrototype(object,name){
+        return !object.hasOwnProperty(name)&&(name in object);
+    }
+
+
+
+
+
+</script>
+
+<!--<script type="text/javascript">-->
+    <!--var jsonStr = '[{"id":"01","open":false,"pId":"0","name":"A部门"},{"id":"01","open":false,"pId":"0","name":"A部门"},{"id":"011","open":false,"pId":"01","name":"A部门"},{"id":"03","open":false,"pId":"0","name":"A部门"},{"id":"04","open":false,"pId":"0","name":"A部门"}, {"id":"05","open":false,"pId":"0","name":"A部门"}, {"id":"06","open":false,"pId":"0","name":"A部门"}]';-->
+    <!--//  var jsonObj = $.parseJSON(jsonStr);-->
+    <!--var jsonObj =  JSON.parse(jsonStr)-->
+    <!--console.log(jsonObj)-->
+    <!--var jsonStr1 = JSON.stringify(jsonObj)-->
+    <!--console.log(jsonStr1+"jsonStr1")-->
+    <!--var jsonArr = [];-->
+    <!--for(var i =0 ;i < jsonObj.length;i++){-->
+        <!--jsonArr[i] = jsonObj[i];-->
+    <!--}-->
+    <!--console.log(typeof(jsonArr))-->
+<!--</script>-->
+
+<script>
+//    var key = 'abc';
+//    var obj = {key : '值'}; // 好奇一下，你为什么会用 oBj 这么奇葩的大小写方式？
+//
+//    // 复制原来的值
+//    obj[key] = obj['key'];
+//    // 删除原来的键
+//    delete obj['key'];
+//    // 检查效果
+//    alert(obj.abc);
+</script>
+
+
+</html>
