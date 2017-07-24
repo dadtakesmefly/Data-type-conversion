@@ -6,7 +6,7 @@
     <script src="jquery-1.8.3/jquery.min.js"></script>
 </head>
 <body>
-    <div>
+    <div class="div">
         <p>测试文本1</p>
         <p>测试文本2</p>
         <img src="images/1.jpg" alt=""/>
@@ -18,44 +18,50 @@
 </body>
 <script>
     console.log($("div").html());
-    var obj={};
-    var arr =[];
-    $("div").children().each(function (i,v) {
 
-        if(hasPrototype(v, "src")){
-            obj.type = "image" ;
-            obj.content=$(this).attr("src");
-        }
-        else{
-            obj.type = "text" ;
-            obj.content=$(this).text();
-        }
+    toJSONString("div")
 
-        var obj1 =JSON.stringify(obj);
+
+//判断对象是否含有某个属性
+function hasPrototype(object,name){
+        return !object.hasOwnProperty(name)&&(name in object);
+    }
+
+function toJSONString(ele){
+        var obj={};
+        var arr =[];
+        $(ele).children().each(function (i,v) {
+
+            if(hasPrototype(v, "src")){
+                obj.type = "image" ;
+                obj.content=$(this).attr("src");
+            }
+            else{
+                obj.type = "text" ;
+                obj.content=$(this).text();
+            }
+
+            var obj1 =JSON.stringify(obj);
 //        var obj2 =eval("("+obj1 +")")  //字符串转对象
 
 //        var obj2 =JSON.parse(obj1)   //字符串转对象
 
 //        console.log(typeof obj2);
 
-         arr[i]=obj1 //数组里面字符串
+            arr[i]=obj1 //数组里面字符串
 
 //        arr[i] =obj2 //数组里面是对象
 
-    })
+        })
 
-    console.log(arr);
-    var str = arr.toString()
-    console.log(str);
-    console.log(typeof str);
-    var str1 ="[";
-    var str2 ="]";
-    console.log(str1.concat(str,str2));
-    console.log(typeof str1.concat(str,str2));
-
-//判断对象是否含有某个属性
-function hasPrototype(object,name){
-        return !object.hasOwnProperty(name)&&(name in object);
+        console.log(arr);
+        var str = arr.toString()
+        console.log(str);
+        console.log(typeof str);
+        var str1 ="[";
+        var str2 ="]";
+        console.log(str1.concat(str,str2));
+        console.log(typeof str1.concat(str,str2));
     }
 
 </script>
