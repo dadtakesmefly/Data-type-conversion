@@ -63,6 +63,63 @@ function toJSONString(ele){
         console.log(str1.concat(str,str2));
         console.log(typeof str1.concat(str,str2));
     }
+    
+    
+ //html结构转成list 升级版
+     //将上传图片的宽高一起传给后台
+     [{"type":"text","content":"请输入您的活动提议内容供大家了解基本情况"},
+     {"type":"text","content":"我的活动"},
+     {"type":"text","content":""},
+     {"type":"image","content":"http://oodpya7z3.bkt.clouddn.com/CTS_1501060186739_wangEditorMobileFile.jpg","width":"700","high":"1004"},
+     {"type":"text","content":"好热"},{"type":"text","content":""},
+     {"type":"image","content":"http://oodpya7z3.bkt.clouddn.com/CTS_1501060195864_wangEditorMobileFile.jpg","width":"1200","high":"1872"},
+     {"type":"text","content":"热"}]
+     /*   function htmltoJSONString(ele){
+            var obj={};
+            var arr =[];
+            $(ele).children().each(function (i,v) {
+
+                if(hasPrototype(v, "src")){
+                    console.log(v);
+                    console.log(typeof v);
+                    console.log(v.width);
+                    console.log(v.height);
+                    var width = String(v.width);
+                    var height = String(v.height);
+                    console.log(width);
+                    console.log(height);
+                    obj.type = "image" ;
+                    obj.content=$(this).attr("src");
+                    obj.width = width;
+                    obj.high =height;
+
+                }
+                else{
+                    obj.type = "text" ;
+                    obj.content=$(this).text();
+                    delete obj['width'];
+                    delete obj['high'];
+                }
+
+                var obj1 =JSON.stringify(obj);
+//        var obj2 =eval("("+obj1 +")")  //字符串转对象
+//        var obj2 =JSON.parse(obj1)   //字符串转对象
+//        console.log(typeof obj2);
+                arr[i]=obj1 //数组里面字符串
+//        arr[i] =obj2 //数组里面是对象
+            })
+//        console.log(arr);
+            var str = arr.toString()
+//        console.log(str);
+//        console.log(typeof str);
+            var str1 ="[";
+            var str2 ="]";
+            var str3 = str1.concat(str,str2)
+//        console.log(str3);
+//        console.log(typeof str3);
+            return str3
+        } */
+    
 
 </script>
 
