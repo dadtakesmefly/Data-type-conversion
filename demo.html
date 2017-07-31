@@ -30,7 +30,7 @@ function hasPrototype(object,name){
 function toJSONString(ele){
         var obj={};
         var arr =[];
-        $(ele).children().each(function (i,v) {
+        $(ele).contents().each(function (i,v) {
 
             if(hasPrototype(v, "src")){
                 obj.type = "image" ;
